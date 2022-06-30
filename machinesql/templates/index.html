@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machines status</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/machine.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'css/wati_big_aline.png' %}">
+    <style>
+        #box {
+            width: 1530px;
+            background-color: white;
+            margin: auto;
+            column-count: 3;
+        }
+    </style>
+</head>
+<body>
+    <center>
+
+        <div class="title">
+            <h1><b>Status of the BRAVE machines</b></h1>
+            <hr />
+        </div>
+
+        <div id="box">
+            <aside>
+                <div class="left">
+                    <table border="1">
+                        <tr>
+                            <td align="center"><B>Battery 1 </B></td>
+                        </tr>
+                        {% for data in param %}
+                        {% if data.MachineID > 93 %}
+                        {% if data.MachineID < 97 %}
+                        {% if data.Running == True %}
+                        <tr>
+                            <th><canvas id="myCanvas" width="200" height="100" style="background-color:springgreen ;"></canvas><p align="center">{{data.MachineName}}</p></th>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <th><canvas id="myCanvas" width="200" height="100" style="background-color:orangered ;"></canvas><p align="center">{{data.MachineName}}</p></th>
+                        </tr>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+            </aside>
+            <section>
+                <div class="center">
+                    <table border="1">
+                        <tr>
+                            <td align="center"><B>Battery 2 </B></td>
+                        </tr>
+                        {% for data in param %}
+                        {% if data.MachineID > 96 %}
+                        {% if data.Running == True %}
+                        <tr>
+                            <th><canvas id="myCanvas" width="200" height="100" style="background-color:springgreen ;"></canvas><p align="center">{{data.MachineName}}</p></th>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <th><canvas id="myCanvas" width="200" height="100" style="background-color:orangered ;"></canvas><p align="center">{{data.MachineName}}</p></th>
+                        </tr>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+                <ul>
+                </ul>
+            </section>
+            <div class="right">
+                <!--
+                <table border="1">
+                    <tr>
+                        <td align="center"><B>Battery 3 </B></td>
+                    </tr>
+                    {% for data in param %}
+                    {% if data.MachineID < 2 %}
+                    {% if data.Running == True %}
+                    <tr>
+                        <th><canvas id="myCanvas" width="200" height="100" style="background-color:springgreen ;"></canvas><p align="center">{{data.MachineName}}</p></th>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <th><canvas id="myCanvas" width="200" height="100" style="background-color:orangered ;"></canvas><p align="center">{{data.MachineName}}</p></th>
+                    </tr>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </table>-->
+                <iframe src="http://localhost:8000/three/" height="200" width="300" title="Machine3 status"></iframe>
+                <p><a href="http://localhost:8000/three/">Machine 3 status</a></p>
+            </div>
+        </div>
+    </center>
+</body>
+</html>

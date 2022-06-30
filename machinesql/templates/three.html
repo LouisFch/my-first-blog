@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine3 status</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/machine3.css' %}">
+</head>
+<body>
+    <center>
+
+            <div class="right">
+                <table border="1">
+                    <tr>
+                        <td align="center"><B>Battery 3 </B></td>
+                    </tr>
+                    {% for data in param %}
+                    {% if data.MachineID < 2 %}
+                    {% if data.Running == True %}
+                    <tr>
+                        <th><canvas id="myCanvas" width="200" height="100" style="background-color:springgreen ;"></canvas><p align="center">{{data.MachineName}}</p></th>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <th><canvas id="myCanvas" width="200" height="100" style="background-color:orangered ;"></canvas><p align="center">{{data.MachineName}}</p></th>
+                    </tr>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </center>
+</body>
+</html

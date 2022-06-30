@@ -1,0 +1,17 @@
+body, ul, h1{
+    margin:0;
+    padding:0;
+}
+
+.title {
+    background-color: royalblue;
+    color: white;
+}
+body {
+    background-color: white;
+}
+
+.right {
+    background-color: whitesmoke;
+    display: inline-block;
+}
